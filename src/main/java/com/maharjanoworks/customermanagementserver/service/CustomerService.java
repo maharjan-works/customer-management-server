@@ -1,2 +1,10 @@
-package com.maharjanoworks.customermanagementserver.service;public interface CustomerService {
+package com.maharjanoworks.customermanagementserver.service;
+
+import com.maharjanoworks.customermanagementserver.model.Customer;
+
+import java.util.List;
+
+public interface CustomerService {
+
+    List<Customer> findCustomers();
 }
