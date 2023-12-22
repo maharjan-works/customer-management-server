@@ -6,7 +6,9 @@ import com.maharjanoworks.customermanagementserver.repository.CustomerRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -42,5 +44,13 @@ public class CustomerServiceImpl implements CustomerService{
 
        //step3: saving updated customer details
       return  this.customerRepository.save(dbCustomer);
+    }
+
+    @Override
+    public Map<String, Boolean> deleteCustomer(Long customerId) {
+        this.customerRepository.deleteById(customerId);
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted",Boolean.TRUE);
+        return response;
     }
 }

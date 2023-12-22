@@ -4,6 +4,7 @@ import com.maharjanoworks.customermanagementserver.model.Customer;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CustomerService {
 
@@ -14,4 +15,6 @@ public interface CustomerService {
     Customer getCustomerById(Long customerId);
 
     Customer updateCustomer(Long customerId, Customer customerDetails);
+
+    Map<String, Boolean> deleteCustomer(Long customerId);
 }

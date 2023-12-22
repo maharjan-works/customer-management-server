@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins="http://localhost:4200/")
 @RestController
@@ -34,6 +35,12 @@ public class CustomerController {
     public Customer updateCustomer(@PathVariable("customerId") Long customerId, @RequestBody Customer customerDetails){
         return this.customerService.updateCustomer(customerId,customerDetails);
     }
+
+    @DeleteMapping("/customer/{customerId}")
+    public Map<String, Boolean> deleteCustomer(@PathVariable("customerId") Long customerId){
+      return   this.customerService.deleteCustomer(customerId);
+    }
+
 
 
 
