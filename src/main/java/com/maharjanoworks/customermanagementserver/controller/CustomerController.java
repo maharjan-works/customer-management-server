@@ -30,6 +30,11 @@ public class CustomerController {
         return ResponseEntity.ok(this.customerService.getCustomerById(customerId));
     }
 
+    @PutMapping("/customer/{customerId}")
+    public Customer updateCustomer(@PathVariable("customerId") Long customerId, @RequestBody Customer customerDetails){
+        return this.customerService.updateCustomer(customerId,customerDetails);
+    }
+
 
 
 }

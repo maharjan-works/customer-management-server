@@ -28,4 +28,19 @@ public class CustomerServiceImpl implements CustomerService{
        return this.customerRepository.findById(customerId)
                .orElseThrow(()-> new CustomerNotFoundException("Customer not found with ID: "+ customerId));
     }
+
+    @Override
+    public Customer updateCustomer(Long customerId, Customer customerDetails) {
+        // step1: checking if customer exists
+       Customer dbCustomer = this.customerRepository.findById(customerId)
+                .orElseThrow(()-> new CustomerNotFoundException("Customer not found with ID: "+ customerId));
+
+       // step2: updating customer details
+       dbCustomer.setFirstName(customerDetails.getFirstName());
+       dbCustomer.setLastName(customerDetails.getLastName());
+       dbCustomer.setEmail(customerDetails.getEmail());
+
+       //step3: saving updated customer details
+      return  this.customerRepository.save(dbCustomer);
+    }
 }
