@@ -3,10 +3,8 @@ package com.maharjanoworks.customermanagementserver.controller;
 import com.maharjanoworks.customermanagementserver.model.Customer;
 import com.maharjanoworks.customermanagementserver.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,17 @@ public class CustomerController {
     public List<Customer> findCustomers(){
         return this.customerService.findCustomers();
     }
+
+    @PostMapping("/customer")
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
+        return ResponseEntity.ok(this.customerService.createCustomer(customer));
+    }
+
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("customerId") Long customerId){
+        return ResponseEntity.ok(this.customerService.getCustomerById(customerId));
+    }
+
+
 
 }
